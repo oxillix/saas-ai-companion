@@ -13,7 +13,8 @@ const ChatIdPage = async ({ params }: ChatIdPageProps) => {
   const { userId } = auth();
 
   if (!userId) {
-    return redirectToSignIn();
+    // TODO: this is hacky. Ideally, a non logged in user should get 10 free messages.
+    // return redirectToSignIn();
   }
 
   const companion = await prismadb.companion.findUnique({
@@ -23,9 +24,9 @@ const ChatIdPage = async ({ params }: ChatIdPageProps) => {
         orderBy: {
           createdAt: "asc",
         },
-        where: {
-          userId,
-        },
+        // where: {
+        //   userId,
+        // },
       },
       _count: {
         select: {

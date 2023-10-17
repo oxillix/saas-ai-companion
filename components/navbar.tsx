@@ -34,7 +34,7 @@ export const Navbar = ({ isPro }: NavbarProps) => {
               font.className
             )}
           >
-            companion.ai
+            ChatWithX.ai
           </h1>
         </Link>
       </div>
