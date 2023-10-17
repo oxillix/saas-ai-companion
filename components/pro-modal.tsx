@@ -56,7 +56,7 @@ export const ProModal = () => {
               Companions!
             </p>
             <p className="text-sm pt-6">
-              (Use PayPal; You won't be actually charged)
+              (Use PayPal; You won&apos;t be actually charged)
             </p>
           </DialogDescription>
         </DialogHeader>
