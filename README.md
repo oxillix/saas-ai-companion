@@ -1,5 +1,7 @@
 # ChatWithX: Chat with an AI agent that is trained to believe its person X
 
+## View the result here:
+https://saas-ai-companion-rouge.vercel.app/
 
 ## Installation instructions
 ```bash
