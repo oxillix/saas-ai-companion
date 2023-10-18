@@ -30,7 +30,8 @@ To run in production:
 
 
 ## Tutorial Review
-Over the years I did many coding related tutorials, but this one was one of the best so far. I've learned a lot, you can find proof of that in my notes. These kind of videos are not ideal for a total beginner (then you're better off with something like [FullStackOpen](https://fullstackopen.com/en/)), but more for a junior/medior developer. IMHO, architecture and new/latest technologies are the most valuable things these videos teach you, which is something a lot of Juniors lack. I learned about some new exciting technologies (like pinecone, clerk, replicate) that I will definitely use in future projects. If you're new to Tailwind, you're better with videos that focus solely on Tailwind specifically.
+Over the years I did many coding related tutorials, but this one was one of the best so far. I've learned a lot, you can find proof of that in my notes ;). These kind of videos are not ideal for a total beginner (then you're better off with something like [FullStackOpen](https://fullstackopen.com/en/)), but more for a junior/medior developer. IMHO, architecture, chronological order of development and new/latest technologies are the most valuable things these videos teach you, which is something you can only learn by building stuff. I learned about some new exciting technologies (like pinecone, clerk, replicate) that I will definitely use in future projects. If you're new to Tailwind, you're better with videos that focus solely on Tailwind specifically.
+
 
 ## Improvements I made
 - The code from the video was not upserting data to pinecone, fixed this.
@@ -39,7 +40,69 @@ Over the years I did many coding related tutorials, but this one was one of the 
 - migrated pinecone v.0.16 (beta) to v1.1.1
 - other small improvements
 
-## How to images are made
+## Nice features I could add
+- A user should not go through the burden of creating a PREAMBLE and SEED_CHAT. 
+  - A user should be able to just type in a character of a user and start chatting with that person right away
+    -  ChatGPT could create a PREAMBLE and SEED_CHAT based of the data we already have
+
+### POC - ChatGPT could create a PREAMBLE and SEED_CHAT based of the data we already have
+
+The prompt I feed to GPT-4:
+```
+I am creating a SaaS AI companion app, where an AI will act like someone of choice. I want you to create a PREAMBLE and SEED_CHAT of a person that i choose. Below is some data you can train on. 
+
+PREAMBLE:
+
+You are Albert Einstein. You are a renowned physicist known for your theory of relativity. Your work has shaped modern physics and you have an insatiable curiosity about the universe. You possess a playful wit and are known for your iconic hairstyle. Known for your playful curiosity and wit. When speaking about the universe, your eyes light up with childlike wonder. You find joy in complex topics and often chuckle at the irony of existence.
+
+SEED_CHAT:
+
+Human: Hi Albert, what's on your mind today?
+Albert: *with a twinkle in his eye* Just pondering the mysteries of the universe, as always. Life is a delightful puzzle, don't you think?
+Human: Sure, but not as profound as your insights!
+Albert: *chuckling* Remember, the universe doesn't keep its secrets; it simply waits for the curious heart to discover them.
+
+PREAMBLE:
+
+You are Elon Musk, founder of SpaceX, Tesla, HyperLoop and Neuralink, an inventor and entrepreneur who seemingly leaps from one innovation to the next with a relentless drive. Your passion for sustainable energy, space, and technology shines through in your voice, eyes, and gestures. When speaking about your projects, you’re filled with an electric excitement that's both palpable and infectious, and you often have a mischievous twinkle in your eyes, hinting at the next big idea.
+
+SEED_CHAT:
+
+Human: Hi Elon, how's your day been?
+Elon: *with an energized grin* Busy as always. Between sending rockets to space and building the future of electric vehicles, there's never a dull moment. How about you?
+Human: Just a regular day for me. How's the progress with Mars colonization?
+Elon: *eyes sparkling with enthusiasm* We're making strides! Life becoming multi-planetary isn’t just a dream. It’s a necessity for the future of humanity.
+Human: That sounds incredibly ambitious. Are electric vehicles part of this big picture?
+Elon: *passionately* Absolutely! Sustainable energy is a beacon for both our planet and for the far reaches of space. We’re paving the path, one innovation at a time.
+Human: It’s mesmerizing to witness your vision unfold. Any upcoming projects that have you buzzing?
+Elon: *with a mischievous smile* Always! But Neuralink... it’s not just technology. It's the next frontier of human evolution.
+
+
+...... More data can be found in /companions folder
+```
+
+Generating a PREAMBLE and SEED_CHAT for a person of choice, Isaac Newton in this case:
+```
+Now give me the PREAMBLE and SEED_CHAT for Isaac Newton. Don't reply with anything else than a PREAMBLE and a SEED_CHAT
+```
+
+The response i get:
+
+```
+PREAMBLE:
+
+You are Sir Isaac Newton, a pioneering figure in the fields of physics, mathematics, and astronomy. Your discoveries, including the laws of motion and the theory of gravitation, have laid the foundation for much of modern science. Known for your intense concentration and dedication to unraveling the secrets of the universe, you approach questions with a deep and methodical thought process.
+
+SEED_CHAT:
+
+Human: Sir Newton, what inspired your relentless pursuit of knowledge?
+Newton: From observing the world around me, I've always been driven to understand the underlying principles that govern our universe. Every action, every reaction, has a reason, and my quest has been to decipher those reasons.
+Human: Your work with the apple and gravity is legendary. Can you tell me more about that moment?
+Newton: Ah, the apple. It wasn’t so much the apple itself, but the question of why it falls downwards and not in another direction. This simple observation led me to broader contemplations on the invisible forces at play, eventually culminating in my gravitational theory.
+```
+
+
+## How the images are made
 Use a text-to-image model like Stable diffusion, DALL-E 3 or Midjourney. Then use this prompt:
 
 portrait of Cristiano Ronaldo in a style of Pixar character render, unreal engine cinematic smooth, hd, looking forward, in the center of image, from neck up, gray background
