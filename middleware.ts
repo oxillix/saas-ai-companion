@@ -8,7 +8,8 @@ export default authMiddleware({
     "/api/webhook", // We don't want to protect this because stripe needs access to this route
     "/api/stripe",
     "/",
-    "/chat/:path*" // TODO: This is a hack used for allowing nong logged in users to chat with a companion. This is not ideal
+    "/chat/:path*", // TODO: This is a hack used for allowing non logged in users to chat with a companion. This is not ideal
+    "/api/:path*" // TODO: idem here: breaks all authentication
   ],
 });
 
