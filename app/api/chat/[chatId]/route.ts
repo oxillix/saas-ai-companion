@@ -7,7 +7,7 @@ import { PromptTemplate } from "langchain/prompts";
 import { LLMChain } from "langchain/chains";
 
 import { rateLimit } from "@/lib/rate-limit";
-import { currentUser } from "@clerk/nextjs";
+import { clerkClient, currentUser } from "@clerk/nextjs";
 import { LangChainStream, StreamingTextResponse } from "ai";
 import { NextResponse } from "next/server";
 import { User } from "@clerk/nextjs/server";
@@ -19,11 +19,11 @@ export async function POST(
   try {
     const { prompt } = await req.json();
     // TODO: fix this hack
-    let user: Partial<User> | null = await currentUser();
+    let user = await currentUser();
 
     // TODO: fix ths hack
     if (!user) {
-      user = { id: "user_2WxVTmtWEP0h8F63ys0BRdXr2Bo" }; // User is "Anonymous User"
+      user = await clerkClient.users.getUser('user_2WxVTmtWEP0h8F63ys0BRdXr2Bo'); // user is "anonymous user"
       //   return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
